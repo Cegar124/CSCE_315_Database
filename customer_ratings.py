@@ -15,7 +15,7 @@ with open("data/customer_ratings.csv", encoding="utf8") as file:
             
             ratings[row[1]] = []
 
-            ratings[row[1]].append([row[1],row[2],row[3],row[4]])
+            ratings[row[1]].append([row[1],row[2],row[3],row[4][2:]])
             
         else:
             
@@ -25,19 +25,19 @@ with open("data/customer_ratings.csv", encoding="utf8") as file:
             
             for rating in ratings[row[1]]:
 
-                if(rating[3] == row[4]): # 
+                if(rating[3] == row[4][2:]): # 
                     addNewEntry = False
                     
                     if(rating[2] < row[3]) :
-
-                        ratings[row[1]][count] = [row[1],row[2],row[3],row[4]]
+                        
+                        ratings[row[1]][count] = [row[1],row[2],row[3],row[4][2:]]
 
                 count += 1
                     
 
             if addNewEntry:
 
-                ratings[row[1]].append([row[1],row[2],row[3],row[4]])
+                ratings[row[1]].append([row[1],row[2],row[3],row[4][2:]])
 
 file.close()
 
